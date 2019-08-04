@@ -67,6 +67,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'activerecord-import'
 gem 'kaminari'
 gem 'materialize-sass', '~> 1.0.0'
+gem 'material_icons' 
 gem 'mysql2'
 gem 'rubocop', '~> 0.72.0', require: false
 gem 'slim-rails'

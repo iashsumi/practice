@@ -1,5 +1,18 @@
 h1 ユーザー一覧
 
-- @users.each do |user|
-  = p user.id
+table.highlight
+  thead
+    tr
+      th id
+      th Name
+      th created_at
+      th updated_at
+  - @users.each do |user|
+    tbody
+      tr
+        td #{user.id}
+        td #{user.name}
+        td #{user.created_at}
+        td #{user.updated_at}
+
 = paginate @users
