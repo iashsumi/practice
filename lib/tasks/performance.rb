@@ -1,74 +1,47 @@
 class Tasks::Performance
-  # docker-compose exec app bundle exec rails runner Tasks::Perfprmance.execute
+  # docker-compose exec app bundle exec rails runner Tasks::Performance.execute
   def self.execute
+    users = []
     p Time.zone.now.strftime("%H:%M:%S")
-    a = []
-    User.all.each do | item |
-      a << item.name
+    10000.times do | i |
+      user = User.new
+      user.name = "test#{i}"
+      user.address = "tokyo"
+      user.email = "test@example.com"
+      user.save
     end
-    
-    p a.length
-
-    #p User.where(name: '43ca1811-fb60-4530-a6cd-727817efba22').length
-    # p ActiveRecord::Base.connection.select_all('select a.* from users as a left join users as b on a.name = b.name').to_hash.length
     p Time.zone.now.strftime("%H:%M:%S")
-
-    # p 'start'
-    # p Time.now
-    # users = []
-    # 100000.times do | i |
-    #   users << User.new(name: SecureRandom.uuid)
-    # end
-    # p Time.now
-    # User.import(users)
-    # p Time.now
   end
 
-  def self.memory
-    # find_each
-    # p Time.zone.now.strftime("%H:%M:%S")
-    # a = []
-    # User.all.find_each do | item |
-    #   a << item.name
-    # end
-    # p a.length
-    # p Time.zone.now.strftime("%H:%M:%S")
-
-    # no find_each
-    # p Time.zone.now.strftime("%H:%M:%S")
-    # a = []
-    # User.all.each do | item |
-    #   a << item.name
-    # end
-    # p a.length
-    # p Time.zone.now.strftime("%H:%M:%S")
-
-    # sort limit 指定
+  def self.execute2
+    users = []
     p Time.zone.now.strftime("%H:%M:%S")
-    a = []
-    User.all.order(:name).find_each do | item |
-      a << item.name
+    10000.times do | i |
+      user = User.new
+      user.name = "test#{i}"
+      user.address = "tokyo"
+      user.email = "test@example.com"
+      users << user
     end
-    p a[0]
-    p a[1]
-    p a[2]
-    p a[3]
-    p a[4]
-    p a[5]
+    p User.import(users)
     p Time.zone.now.strftime("%H:%M:%S")
+  end
 
-    # p Time.zone.now.strftime("%H:%M:%S")
-    # a = []
-    # User.all.order(:name).each do | item |
-    #   a << item.name
-    # end
-    # p a[0]
-    # p a[1]
-    # p a[2]
-    # p a[3]
-    # p a[4]
-    # p a[5]
-    # p Time.zone.now.strftime("%H:%M:%S")
+  # activerecord-import(add transaction)
+  def self.execute3
+    users = []
+    p Time.zone.now.strftime("%H:%M:%S")
+    User.transaction do
+      100000.times do | i |
+        user = User.new
+        user.name = "test#{i}"
+        user.address = "tokyo"
+        user.email = "test@example.com"
+        users << user
+      end
+      p User.import(users)
+    end
+    p Time.zone.now.strftime("%H:%M:%S")
   end
 end
 
