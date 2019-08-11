@@ -1,0 +1,10 @@
+a.waves-effect.waves-light.modal-trigger href="#modal#{object.id}" 削除
+div[id="modal#{object.id}" class="modal"]
+  .modal-content
+    h4 削除の確認
+    p 削除しますか？
+    p 選択中のId
+    p =object.id
+  .modal-footer
+    a.modal-close.waves-effect.waves-red.btn-flat.btn href="#!"  Disagree
+    =link_to 'Agree', url, method: :delete, class: "modal-close waves-effect waves-green btn-flat btn"
