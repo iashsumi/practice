@@ -8,6 +8,8 @@ html
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   / https://qiita.com/DaichiSaito/items/1fcf8258e073a21c7f88
+  / 遷移時にドロップダウンが動かなくなることがあるので、turbolinks削除
+  / https://qiita.com/networkyohan69/items/40249154a8ea4a8262fb
   body
     header
       / nav
@@ -21,10 +23,17 @@ html
             i.material-icons menu
       / sidebar
       ul#slide-out.sidenav.sidenav-fixed
-        li
-          = link_to "ユーザー一覧", users_path
-        li
-          = link_to "ユーザー一括登録", new_all_users_path
+        li.no-padding
+          ul.collapsible.collapsible-accordion
+            li
+              a.collapsible-header
+                | ユーザー管理
+              .collapsible-body
+                ul
+                  li
+                    = link_to "ユーザー一覧", users_path
+                  li
+                    = link_to "ユーザー一括登録", new_all_users_path
     main
       div.container
         = yield
