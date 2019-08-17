@@ -1,0 +1,12 @@
+-unless @user.new_record? 
+  =f.label :id
+  =f.hidden_field :id, :value => @user.id  
+=f.label :name
+=f.hidden_field :name, :value => @user.name
+p =@user.name
+=f.label :address
+=f.hidden_field :address, :value => @user.address
+p =@user.address
+=f.label :email
+=f.hidden_field :email, :value => @user.email
+p =@user.email

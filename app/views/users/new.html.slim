@@ -1,0 +1,5 @@
+h1 新規登録
+
+= form_for(@user, url: new_confirm_users_path, method: :get) do |f| 
+  = render :partial => 'users/form', :locals => {:f => f}
+  = f.submit '確認'
