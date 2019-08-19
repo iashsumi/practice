@@ -2,7 +2,7 @@
 set :rails_env, 'production'
  
 # サーバー、ユーザー、ロールの指定
-server "ec2-18-179-46-223.ap-northeast-1.compute.amazonaws.com", user: "ec2-user", roles: %w{app db web}
+server "ec2-3-112-44-247.ap-northeast-1.compute.amazonaws.com", user: "ec2-user", roles: %w{app db web}
  
 # デプロイ先のリポジトリ指定(/home/ec2-user/test-deploy.git)
 set :repo_url, "/home/ec2-user/test-deploy.git"
