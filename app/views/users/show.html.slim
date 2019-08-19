@@ -12,3 +12,5 @@ p Created_at
 p =l(@user.created_at)
 p Updated_at
 p =l(@user.updated_at)
+p avatar
+= image_tag @user.avatar_url, size: '200x200' if @user.avatar?

@@ -1,12 +1,15 @@
 -unless @user.new_record? 
   =f.label :id
-  =f.hidden_field :id, :value => @user.id  
+  =f.hidden_field :id, value: @user.id  
 =f.label :name
-=f.hidden_field :name, :value => @user.name
+=f.hidden_field :name, value: @user.name
 p =@user.name
 =f.label :address
-=f.hidden_field :address, :value => @user.address
+=f.hidden_field :address, value: @user.address
 p =@user.address
 =f.label :email
-=f.hidden_field :email, :value => @user.email
+=f.hidden_field :email, value: @user.email
 p =@user.email
+= f.label :avatar
+= image_tag @user.avatar_url, size: '200x200' if @user.avatar?
+= f.hidden_field :avatar_cache

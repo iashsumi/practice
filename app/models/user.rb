@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  mount_uploader :avatar, AvatarUploader
   has_many :emails, dependent: :destroy
   accepts_nested_attributes_for :emails, allow_destroy: true
 

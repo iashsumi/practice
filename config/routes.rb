@@ -3,12 +3,12 @@ Rails.application.routes.draw do
 
   resources :users do
     collection do
-      get 'new_confirm'
+      post 'new_confirm'
       get 'new_all'
       post 'import'
     end
     member do
-      get 'edit_confirm'
+      patch 'edit_confirm'
     end
   end
 end
