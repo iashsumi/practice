@@ -14,6 +14,7 @@ services:
     build: .
     environment:
       RAILS_ENV: development
+      EDITOR: vim
     volumes:
       - .:/app
       - bundle_install:/usr/local/bundle
