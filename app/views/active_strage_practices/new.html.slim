@@ -1,7 +1,7 @@
 h1 Active Storage Practice
 
-= form_for(@practice, url: active_strage_practices_path, method: :POST) do |f|
+= form_for(@practice, url: new_confirm_active_strage_practices_path, method: :POST) do |f|
   = f.label :name
   = f.text_field :name
-  = f.file_field :avatar
+  = f.file_field :avatar, direct_upload: true
   = f.submit '確認'
