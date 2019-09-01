@@ -18,7 +18,8 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    render :new unless @user.save
+    return render :new unless @user.save
+
     redirect_to users_path, flash: { success: '登録しました' }
   end
 
@@ -35,7 +36,8 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     @user.attributes = user_params
-    render :edit unless @user.save
+    return render :edit unless @user.save
+
     redirect_to users_path, flash: { success: '更新しました' }
   end
 
