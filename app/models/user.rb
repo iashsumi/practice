@@ -16,6 +16,6 @@ class User < ApplicationRecord
   end
 
   def self.updatable_attributes
-    ["name"]
+    ['name']
   end
 end

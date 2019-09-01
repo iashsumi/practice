@@ -18,8 +18,9 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    render :new unless @user.save
-    redirect_to users_path, flash: {success: '登録しました'}
+    return render :new unless @user.save
+
+    redirect_to users_path, flash: { success: '登録しました' }
   end
 
   def edit
@@ -35,16 +36,17 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     @user.attributes = user_params
-    render :edit unless @user.save
-    redirect_to users_path, flash: {success: '更新しました'}
+    return render :edit unless @user.save
+
+    redirect_to users_path, flash: { success: '更新しました' }
   end
 
   def destroy
     User.find(params[:id]).destroy
-    redirect_to users_path, flash: {success: '削除しました'}
+    redirect_to users_path, flash: { success: '削除しました' }
   end
 
-  def new_all;end
+  def new_all; end
 
   def import
     User.bulk_insert(params[:file])
@@ -54,6 +56,13 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:id, :name, :address, :email, :avatar, :avatar_cache)
+    params.require(:user).permit(
+      :id,
+      :name,
+      :address,
+      :email,
+      :avatar,
+      :avatar_cache
+    )
   end
 end

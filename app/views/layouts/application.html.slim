@@ -36,6 +36,15 @@ html
                     = link_to "ユーザー登録", new_user_path
                   li
                     = link_to "ユーザー一括登録", new_all_users_path
+            li
+              a.collapsible-header
+                | ActiveStrage練習
+              .collapsible-body
+                ul
+                  li
+                    = link_to "一覧", active_strage_practices_path
+                  li
+                    = link_to "登録", new_active_strage_practice_path
     main
       div.container
         =render partial: "shared/message"

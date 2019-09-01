@@ -11,4 +11,10 @@ Rails.application.routes.draw do
       patch 'edit_confirm'
     end
   end
+
+  resources :active_strage_practices do
+    collection do
+      post 'new_confirm'
+    end
+  end
 end

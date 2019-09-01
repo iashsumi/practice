@@ -1,0 +1,10 @@
+h1 新規登録確認
+
+= form_for(@practice, url: active_strage_practices_path, method: :post) do |f| 
+  =f.label :name
+  =f.hidden_field :name, value: @practice.name
+  p =@practice.name
+  = f.label :avatar
+  = image_tag @practice.avatar, size: '200x200' if @practice.avatar.attached?
+  = f.hidden_field :avatar_blob_id, value: @practice.avatar.blob_id if @practice.avatar.attached?
+  = f.submit '登録'

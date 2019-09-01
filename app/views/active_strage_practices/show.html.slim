@@ -1,0 +1,8 @@
+h1 詳細
+
+p Id
+p =@practice.id
+p Name
+p =@practice.name
+p avatar
+= image_tag @practice.avatar, size: '200x200' if @practice.avatar.attached?

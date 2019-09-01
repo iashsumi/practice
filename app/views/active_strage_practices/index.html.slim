@@ -1,0 +1,22 @@
+h1 一覧
+
+table.highlight
+  thead
+    tr
+      th Id
+      th Name
+      th Show
+      th Delete
+  - @practices.each do |practice|
+    tbody
+      tr
+        td 
+          =practice.id
+        td 
+          =practice.name
+        td 
+          =link_to '詳細', active_strage_practice_path(practice)
+        td
+          =render partial: "shared/delete_modal", locals: {object: practice, url: active_strage_practice_path(practice)}
+= paginate @practices
+

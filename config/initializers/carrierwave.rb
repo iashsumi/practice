@@ -3,7 +3,6 @@ require 'carrierwave/storage/file'
 require 'carrierwave/storage/fog'
  
 CarrierWave.configure do |config|
-  config.fog_provider = 'fog/aws'
   # storage, cache_storageはfog(外部サービス指定)
   config.storage :fog
   config.cache_storage = :fog
@@ -32,6 +31,9 @@ CarrierWave.configure do |config|
       host: 'minio',  
       endpoint: 'http://minio:9000'
     }
+  when 'test'
+    config.storage :file
+    config.cache_storage = :file
   end
 end
 # ファイル名に日本語を許可

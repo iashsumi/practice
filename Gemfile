@@ -52,11 +52,6 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 
-end
-
-group :test do
-  # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '>= 2.15'
   gem "capistrano", "~> 3.10", require: false
   gem "capistrano-rails", "~> 1.4", require: false
   gem 'capistrano-bundler'
@@ -66,20 +61,27 @@ group :test do
   gem 'capistrano-sidekiq'
   gem 'capistrano3-puma'
   gem 'capistrano-ssh-doctor', git: 'https://github.com/capistrano-plugins/capistrano-ssh-doctor.git'
-  gem 'selenium-webdriver'
-  # Easy installation and use of chromedriver to run system tests with Chrome
-  gem 'chromedriver-helper'
+end
+
+group :test do
+  # gem 'capybara', '>= 2.15'
+  # # Adds support for Capybara system testing and selenium driver
+  # gem 'selenium-webdriver'
+  # # Easy installation and use of chromedriver to run system tests with Chrome
+  # gem 'chromedriver-helper'
+  gem 'shoulda-matchers'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'activerecord-import'
+gem "aws-sdk-s3", require: false
 gem 'carrierwave', '~> 2.0'
 gem 'fog-aws'
 gem 'kaminari'
 gem 'materialize-sass', '~> 1.0.0'
 gem 'material_icons' 
 gem 'mysql2'
-gem 'rubocop', '~> 0.72.0', require: false
+gem 'rubocop-rails'
 gem 'slim-rails'
