@@ -14,7 +14,6 @@ local:
 amazon:
   service: S3
   bucket: mybucket-tlog-test
-  use_iam_profile: true
   force_path_style: true
   region: 'ap-northeast-1'
 
