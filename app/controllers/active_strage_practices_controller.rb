@@ -18,8 +18,12 @@ class ActiveStragePracticesController < ApplicationController
 
   def create
     @practice = ActiveStragePractice.new(practice_params)
-    @practice.avatar.attach(ActiveStorage::Blob.find(@practice.avatar_blob_id))
-    render :new unless @practice.save
+    if @practice.avatar_blob_id.present?
+      blob = ActiveStorage::Blob.find(@practice.avatar_blob_id)
+      @practice.avatar.attach(blob)
+    end
+    return render :new unless @practice.save
+
     redirect_to active_strage_practices_path, flash: { success: '登録しました' }
   end
 
