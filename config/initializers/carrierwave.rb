@@ -3,7 +3,6 @@ require 'carrierwave/storage/file'
 require 'carrierwave/storage/fog'
  
 CarrierWave.configure do |config|
-  config.fog_provider = 'fog/aws'
   # storage, cache_storageはfog(外部サービス指定)
   config.storage :fog
   config.cache_storage = :fog
