@@ -20,17 +20,21 @@ class ActiveStragePracticesController < ApplicationController
     @practice = ActiveStragePractice.new(practice_params)
     @practice.avatar.attach(ActiveStorage::Blob.find(@practice.avatar_blob_id))
     render :new unless @practice.save
-    redirect_to active_strage_practices_path, flash: {success: '登録しました'}
+    redirect_to active_strage_practices_path, flash: { success: '登録しました' }
   end
 
   def destroy
     ActiveStragePractice.find(params[:id]).destroy
-    redirect_to active_strage_practices_path, flash: {success: '削除しました'}
+    redirect_to active_strage_practices_path, flash: { success: '削除しました' }
   end
 
   private
 
   def practice_params
-    params.require(:active_strage_practice).permit(:name, :avatar, :avatar_blob_id)
+    params.require(:active_strage_practice).permit(
+      :name,
+      :avatar,
+      :avatar_blob_id
+    )
   end
 end

@@ -82,5 +82,5 @@ gem 'kaminari'
 gem 'materialize-sass', '~> 1.0.0'
 gem 'material_icons' 
 gem 'mysql2'
-gem 'rubocop', '~> 0.72.0', require: false
+gem 'rubocop-rails'
 gem 'slim-rails'

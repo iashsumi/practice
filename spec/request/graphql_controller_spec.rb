@@ -12,7 +12,7 @@ describe GraphqlController, type: :request do
 
     it 'return name' do
       post graphql_path, params: { query: query_string }
-      expect(response.body).to include 'test_name' 
+      expect(response.body).to include 'test_name'
     end
   end
 end

@@ -1,3 +1,6 @@
+require:
+  - rubocop-rails
+
 Rails:
   Enabled: true
 
@@ -10,6 +13,9 @@ AllCops:
     - db/**/*
     - config/**/*
     - Gemfile
+    - Rakefile
+    - spec/rails_helper.rb
+    - spec/spec_helper.rb
 
 # Missing magic comment # frozen_string_literal: true. を無視
 Style/FrozenStringLiteralComment:
@@ -19,19 +25,6 @@ Style/FrozenStringLiteralComment:
 Style/Documentation:
   Enabled: false
 
-# graphql_controller.rb を基準にする
-# 1行の長さ
+# コメント行はチェックしない
 Metrics/LineLength:
-  Max: 110
-
-# メソッドの長さ
-Metrics/MethodLength:
-  Max: 15
-
-# 引数の文字の最小値
-Naming/UncommunicativeMethodParamName:
-  MinNameLength: 1
-
-# Use nested module/class definitions instead of compact style. を無視
-Style/ClassAndModuleChildren:
-  Enabled: false
+  IgnoredPatterns: ['(\A|\s)#']
