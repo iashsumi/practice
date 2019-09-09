@@ -38,6 +38,33 @@ html
                     = link_to "ユーザー一括登録", new_all_users_path
             li
               a.collapsible-header
+                | 著者管理
+              .collapsible-body
+                ul
+                  li
+                    = link_to "著者一覧", authors_path
+                  li
+                    = link_to "著者登録", new_author_path
+            li
+              a.collapsible-header
+                | 出版社管理
+              .collapsible-body
+                ul
+                  li
+                    = link_to "出版社一覧", publishers_path
+                  li
+                    = link_to "出版社登録", new_publisher_path
+            li
+              a.collapsible-header
+                | 本管理
+              .collapsible-body
+                ul
+                  li
+                    = link_to "本一覧", books_path
+                  li
+                    = link_to "本登録", new_book_path
+            li
+              a.collapsible-header
                 | ActiveStrage練習
               .collapsible-body
                 ul

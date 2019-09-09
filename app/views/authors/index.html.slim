@@ -1,0 +1,31 @@
+h1 一覧
+
+table.highlight
+  thead
+    tr
+      th Id
+      th Name
+      th Created_at
+      th Updated_at
+      th Show
+      th Edit
+      th Delete
+  - @authors.each do |author|
+    tbody
+      tr
+        td 
+          =author.id
+        td 
+          =author.name
+        td 
+          =l(author.created_at)
+        td 
+          =l(author.updated_at)
+        td 
+          =link_to '詳細', author_path(author)
+        td 
+          =link_to '編集', edit_author_path(author)
+        td
+          =render partial: "shared/delete_modal", locals: {object: author, url: author_path(author)}
+= paginate @authors
+

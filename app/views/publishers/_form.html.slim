@@ -1,0 +1,6 @@
+-unless @publisher.new_record? 
+  =f.label :id
+  =f.hidden_field :id, :value => @publisher.id
+  p =@publisher.id
+=f.label :name
+=f.text_field :name

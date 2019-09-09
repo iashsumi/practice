@@ -1,0 +1,31 @@
+h1 一覧
+
+table.highlight
+  thead
+    tr
+      th Id
+      th Name
+      th Created_at
+      th Updated_at
+      th Show
+      th Edit
+      th Delete
+  - @publishers.each do |publisher|
+    tbody
+      tr
+        td 
+          =publisher.id
+        td 
+          =publisher.name
+        td 
+          =l(publisher.created_at)
+        td 
+          =l(publisher.updated_at)
+        td 
+          =link_to '詳細', publisher_path(publisher)
+        td 
+          =link_to '編集', edit_publisher_path(publisher)
+        td
+          =render partial: "shared/delete_modal", locals: {object: publisher, url: publisher_path(publisher)}
+= paginate @publishers
+

@@ -1,0 +1,6 @@
+-unless @author.new_record? 
+  =f.label :id
+  =f.hidden_field :id, value: @author.id  
+=f.label :name
+=f.hidden_field :name, value: @author.name
+p =@author.name

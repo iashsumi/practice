@@ -1,0 +1,5 @@
+h1 編集
+
+= form_with(model: @book, url: edit_confirm_book_path(@book), method: :patch, local: true) do |f| 
+  = render :partial => 'books/form', :locals => {:f => f}
+  = f.submit '確認'

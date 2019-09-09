@@ -1,0 +1,19 @@
+-unless @book.new_record? 
+  =f.label :id
+  =f.hidden_field :id, value: @book.id
+.title
+  =f.label :title
+  =f.hidden_field :title, value: @book.title
+  p =@book.title
+.publisher
+  =f.label :publisher_id
+  =f.hidden_field :publisher_id, value: @book.publisher_id
+  p =@book&.publisher&.name
+.author
+  =f.label :author_id
+  =f.hidden_field :author_id, value: @book.author_id
+  p =@book&.author&.name
+.release_date
+  =f.label :release_date
+  =f.hidden_field :release_date, value: @book.release_date
+  p =@book.release_date

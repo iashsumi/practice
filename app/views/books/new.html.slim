@@ -1,0 +1,5 @@
+h1 新規登録
+
+= form_with(model: @book, url: new_confirm_books_path, method: :post, local: true) do |f| 
+  = render :partial => 'books/form', :locals => {:f => f}
+  = f.submit '確認'

@@ -1,0 +1,5 @@
+h1 新規登録確認
+
+= form_for(@publisher, url: publishers_path, method: :post) do |f| 
+  = render :partial => 'publishers/confirm', :locals => {:f => f}
+  = f.submit '登録'

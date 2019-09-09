@@ -1,0 +1,5 @@
+h1 編集確認
+
+= form_for(@publisher, url: publisher_path(@publisher), method: :PATCH) do |f| 
+  = render :partial => 'publishers/confirm', :locals => {:f => f}
+  = f.submit '更新'

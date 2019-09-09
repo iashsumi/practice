@@ -1,6 +1,6 @@
 class AuthorsController < ApplicationController
   def index
-    @authors = Author.page(params[:page]).per(20)
+    @authors = Author.page(params[:page])
   end
 
   def show
@@ -44,5 +44,15 @@ class AuthorsController < ApplicationController
   def destroy
     Author.find(params[:id]).destroy
     redirect_to authors_path, flash: { success: '削除しました' }
-  end 
+  end
+
+  private
+
+  def author_params
+    params.require(:author).permit(
+      :id,
+      :name
+    )
+  end
+
 end

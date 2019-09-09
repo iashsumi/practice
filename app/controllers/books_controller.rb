@@ -1,6 +1,9 @@
 class BooksController < ApplicationController
+  before_action :set_publishers, only: [:new, :edit]
+  before_action :set_authors, only: [:new, :edit]
+
   def index
-    @books = Book.page(params[:page]).per(20)
+    @books = Book.page(params[:page])
   end
 
   def show
@@ -12,15 +15,15 @@ class BooksController < ApplicationController
   end
 
   def new_confirm
-    @book = Book.new(author_params)
+    @book = Book.new(book_params)
     render :new unless @book.valid?
   end
 
   def create
-    @book = Book.new(author_params)
+    @book = Book.new(book_params)
     return render :new unless @book.save
 
-    redirect_to authors_path, flash: { success: '登録しました' }
+    redirect_to books_path, flash: { success: '登録しました' }
   end
 
   def edit
@@ -29,20 +32,40 @@ class BooksController < ApplicationController
 
   def edit_confirm
     @book = Book.find(params[:id])
-    @book.attributes = author_params
-    render :new unless @book.valid?
+    @book.attributes = book_params
+    render :edit unless @book.valid?
   end
 
   def update
     @book = Book.find(params[:id])
-    @book.attributes = author_params
+    @book.attributes = book_params
     return render :edit unless @book.save
 
-    redirect_to authors_path, flash: { success: '更新しました' }
+    redirect_to books_path, flash: { success: '更新しました' }
   end
 
   def destroy
     Book.find(params[:id]).destroy
-    redirect_to authors_path, flash: { success: '削除しました' }
+    redirect_to books_path, flash: { success: '削除しました' }
+  end
+
+  private
+
+  def book_params
+    params.require(:book).permit(
+      :id,
+      :title,
+      :publisher_id,
+      :author_id,
+      :release_date
+    )
+  end
+
+  def set_publishers
+    @publishers = Publisher.all.pluck(:name, :id)
+  end
+
+  def set_authors
+    @authors = Author.all.pluck(:name, :id)
   end
 end
