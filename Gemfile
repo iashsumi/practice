@@ -79,9 +79,11 @@ gem 'activerecord-import'
 gem "aws-sdk-s3", require: false
 gem 'carrierwave', '~> 2.0'
 gem 'fog-aws'
+gem "jquery-rails"
 gem 'kaminari'
 gem 'materialize-sass', '~> 1.0.0'
 gem 'material_icons' 
 gem 'mysql2'
+gem 'ransack'
 gem 'rubocop-rails'
 gem 'slim-rails'

@@ -65,6 +65,15 @@ html
                     = link_to "本登録", new_book_path
             li
               a.collapsible-header
+                | 貸出
+              .collapsible-body
+                ul
+                  li
+                    = link_to "一覧", lending_datum_index_path
+                  li
+                    = link_to "登録", new_header_lending_datum_index_path
+            li
+              a.collapsible-header
                 | ActiveStrage練習
               .collapsible-body
                 ul

@@ -32,10 +32,15 @@ Rails.application.routes.draw do
 
   resources :lending_datum do
     collection do
+      get 'books'
+      get 'new_header'
+      post 'new_book_select'
       post 'new_confirm'
+      post 'add_book'
     end
     member do
       patch 'edit_confirm'
+      delete 'delete_book'
     end
   end
 

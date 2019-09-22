@@ -1,0 +1,26 @@
+javascript:
+  document.body.addEventListener('ajax:success', function(event) {
+    var detail = event.detail;
+    var data = detail[0], status = detail[1],  xhr = detail[2];
+    console.log(data);
+    // var greet = document.getElementById('search_result')
+    // greet.innerHTML = data
+  })
+
+h1 本の選択
+
+.row
+  .col.s12
+    ul.tabs
+      li.tab.col.s6
+        a.active href='#search' 検索
+      li.tab.col.s6 
+        a href='#selected' 選択済
+  .tab-content
+    #search
+      = form_with(url: books_lending_datum_index_path, method: :get) do |f| 
+        = render :partial => 'lending_datum/form_serach_book', :locals => {:f => f}
+    #selected
+      = form_with(model: @lending_datum, url: new_confirm_lending_datum_index_path, method: :post, local: true) do |f| 
+        = render :partial => 'lending_datum/form_book_select', :locals => {:f => f}
+        = f.submit '確認'

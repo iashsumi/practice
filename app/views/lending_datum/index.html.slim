@@ -1,0 +1,40 @@
+h1 一覧
+
+table.highlight
+  thead
+    tr
+      th Id
+      th User_Id
+      th User_Name
+      th checkout_date
+      th return_date
+      th Created_at
+      th Updated_at
+      th Show
+      th Edit
+      th Delete
+  - @lending_data.each do |datum|
+    tbody
+      tr
+        td 
+          =datum.id
+        td 
+          =datum.user_id
+        td 
+          =datum.user.name
+        td 
+          =datum.checkout_date
+        td 
+          =datum.return_date
+        td 
+          =l(datum.created_at)
+        td 
+          =l(datum.updated_at)
+        td 
+          =link_to '詳細', lending_datum_path(datum)
+        td 
+          =link_to '編集', edit_lending_datum_path(datum)
+        td
+          =render partial: "shared/delete_modal", locals: {object: datum, url: lending_datum_path(datum)}
+= paginate @lending_data
+

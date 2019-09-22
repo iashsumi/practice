@@ -54,5 +54,4 @@ class AuthorsController < ApplicationController
       :name
     )
   end
-
 end

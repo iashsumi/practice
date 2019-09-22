@@ -1,0 +1,11 @@
+- books&.each do |book|
+  .col.s3
+    .card
+      .card-image
+        img = ''
+      .card-content
+        p = book.title
+      .card-action
+        = link_to '詳細', book_path(book)
+        = link_to '選択', add_book_lending_datum_index_path(book: {add_id: book.id}), method: :post, remote: true
+        = link_to '削除', delete_book_lending_datum_path(book.id), method: :delete, remote: true

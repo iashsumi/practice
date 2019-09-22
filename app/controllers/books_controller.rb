@@ -1,9 +1,10 @@
 class BooksController < ApplicationController
-  before_action :set_publishers, only: [:new, :edit]
-  before_action :set_authors, only: [:new, :edit]
+  before_action :set_publishers, only: %i[new new_confirm create edit edit_confirm update]
+  before_action :set_authors, only: %i[new new_confirm create edit edit_confirm update]
 
   def index
-    @books = Book.page(params[:page])
+    @q = Book.ransack(params)
+    @books = @q.result(distinct: true).page(params[:page])
   end
 
   def show

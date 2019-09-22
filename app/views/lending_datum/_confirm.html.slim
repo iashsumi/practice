@@ -1,0 +1,33 @@
+-unless @lending_datum.new_record? 
+  =f.label :id
+  =f.hidden_field :id, value: @lending_datum.id
+.user  
+  =f.label :user_id
+  =f.hidden_field :user_id, value: @lending_datum.user_id
+  p =@lending_datum&.user&.name
+.checkout_date  
+  =f.label :checkout_date
+  =f.hidden_field :checkout_date, value: @lending_datum.checkout_date
+  p =@lending_datum.checkout_date
+.return_date
+  =f.label :return_date
+  =f.hidden_field :return_date, value: @lending_datum.return_date
+  p =@lending_datum.return_date
+.books
+  table.highlight
+    thead
+      tr
+        th Book_Id
+        th Book_Name
+        th Show
+    - @lending_datum.borrowed_books.each do |book|
+      tbody
+        tr
+          td 
+            =book.id
+          td 
+            =book.name
+          td 
+            =l(datum.created_at)
+          td 
+            =l(datum.updated_at)

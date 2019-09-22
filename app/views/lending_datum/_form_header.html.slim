@@ -1,0 +1,10 @@
+-unless @lending_datum.new_record? 
+  =f.label :id
+  =f.hidden_field :id, :value => @lending_datum.id
+  p =@lending_datum.id
+.user
+  =f.label :user_id
+  =f.select :user_id, @users, include_blank: true
+.release_date
+  =f.label :release_date
+  =f.text_field :release_date, { class: 'datepicker' }

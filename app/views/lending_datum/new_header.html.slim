@@ -1,0 +1,5 @@
+h1 貸出情報の登録
+
+= form_with(model: @lending_datum, url: new_book_select_lending_datum_index_path, method: :post, local: true) do |f| 
+  = render :partial => 'lending_datum/form_header', :locals => {:f => f}
+  = f.submit '本の選択'

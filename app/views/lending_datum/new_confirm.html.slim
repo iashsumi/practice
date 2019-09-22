@@ -1,0 +1,6 @@
+h1 新規登録確認
+
+= form_with(model: @lending_datum, url: lending_datum_index_path, method: :post) do |f| 
+  = render :partial => 'lending_datum/confirm', :locals => {:f => f}
+  = f.submit '登録'
+
